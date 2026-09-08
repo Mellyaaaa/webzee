@@ -1,247 +1,745 @@
-/* =========================
-   DISCORD STATUS COLORS
-========================= */
-
-.discord-status.online {
-    background: #43b581;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.discord-status.idle {
-    background: #faa61a;
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #171717;
+  background: #f5f5f3;
 }
 
-.discord-status.dnd {
-    background: #f04747;
+html,
+body {
+  min-height: 100%;
+  width: 100%;
 }
 
-.discord-status.offline {
-    background: #747f8d;
+body {
+  overflow-x: hidden;
 }
 
+
+/* BACKGROUND */
+
+.background {
+  position: fixed;
+  inset: -40px;
+
+  background:
+    url("assets/background.jpg")
+    center / cover
+    no-repeat;
+
+  filter: blur(18px);
+
+  transform: scale(1.08);
+
+  z-index: -3;
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(250, 250, 248, .72);
+
+  z-index: -2;
+}
+
+
+/* GRAIN */
+
+.grain {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .055;
+
+  z-index: 20;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+
+/* PAGE */
+
+.page {
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 16px;
+}
+
+
+/* PROFILE */
+
+.profile {
+  width: min(430px, 100%);
+
+  padding: 30px 24px 20px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,.72);
+
+  border-radius: 28px;
+
+  background: rgba(255,255,255,.38);
+
+  box-shadow:
+    0 24px 80px rgba(0,0,0,.12);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+
+/* AVATAR */
+
+.avatar-container {
+  position: relative;
+
+  width: 94px;
+  height: 94px;
+
+  margin: 0 auto 16px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 4px solid rgba(255,255,255,.9);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.14);
+}
+
+.online {
+  position: absolute;
+
+  right: 2px;
+  bottom: 6px;
+
+  width: 17px;
+  height: 17px;
+
+  border: 3px solid white;
+
+  border-radius: 50%;
+
+  background: #65c466;
+}
+
+
+/* NAME */
+
+.name-row {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 7px;
+}
+
+h1 {
+  font-size: 25px;
+
+  letter-spacing: -.7px;
+}
+
+.verified {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #171717;
+
+  color: white;
+
+  font-size: 10px;
+}
+
+.username {
+  margin-top: 3px;
+
+  font-size: 12px;
+
+  color: #777;
+}
+
+.bio {
+  margin: 16px auto 17px;
+
+  max-width: 320px;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+
+  color: #444;
+}
+
+
+/* SOCIAL */
+
+.socials {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+}
+
+.social {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(0,0,0,.08);
+
+  border-radius: 50%;
+
+  color: #222;
+
+  background: rgba(255,255,255,.46);
+
+  text-decoration: none;
+
+  transition: .2s;
+}
+
+.social:hover {
+  transform: translateY(-3px);
+
+  background: white;
+
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.1);
+}
+
+
+/* CARDS */
+
+.discord-card,
+.spotify-card,
+.game-card,
+.music-card {
+  border: 1px solid rgba(255,255,255,.78);
+
+  background: rgba(255,255,255,.5);
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.06);
+}
+
+
+/* DISCORD */
+
+.discord-card {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 12px 14px;
+
+  gap: 12px;
+}
+
+.discord-avatar {
+  position: relative;
+
+  flex: none;
+}
+
+.discord-avatar img {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.discord-status {
+  position: absolute;
+
+  right: -1px;
+  bottom: 0;
+
+  width: 13px;
+  height: 13px;
+
+  border: 3px solid white;
+
+  border-radius: 50%;
+
+  background: #777;
+}
+
+.discord-status.online,
 .discord-online.online {
-    color: #43b581;
+  background: #45bd78;
 }
 
+.discord-status.idle,
 .discord-online.idle {
-    color: #faa61a;
+  background: #e3a52d;
 }
 
+.discord-status.dnd,
 .discord-online.dnd {
-    color: #f04747;
+  background: #e35454;
 }
 
-.discord-online.offline {
-    color: #747f8d;
+.discord-info {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.discord-top {
+  display: flex;
+
+  gap: 8px;
+
+  align-items: center;
+}
+
+.discord-label,
+.spotify-label,
+.game-label {
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  color: #8b8b8b;
+}
+
+.discord-online {
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+.discord-info strong {
+  font-size: 13px;
+}
+
+.discord-info span:last-child {
+  font-size: 11px;
+
+  color: #777;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.discord-icon {
+  margin-left: auto;
+
+  font-size: 20px;
+
+  color: #666;
 }
 
 
-/* =========================
-   SPOTIFY
-========================= */
+/* SPOTIFY */
 
-.spotify-card {
-    margin-top: 11px;
+.spotify-card,
+.game-card {
+  display: flex;
 
-    padding: 12px;
+  align-items: center;
 
-    display: flex;
-    align-items: center;
+  gap: 12px;
 
-    text-align: left;
+  margin-top: 9px;
 
-    border-radius: 16px;
-
-    background:
-        rgba(255,255,255,.52);
-
-    border:
-        1px solid rgba(0,0,0,.06);
-
-    transition:
-        .25s ease;
-
-    animation:
-        activityIn .4s ease;
+  padding: 10px;
 }
 
-.spotify-card:hover {
-    transform: translateY(-2px);
+.spotify-cover,
+.game-image img {
+  width: 48px;
+  height: 48px;
 
-    background:
-        rgba(255,255,255,.7);
+  border-radius: 11px;
+
+  object-fit: cover;
 }
 
-.spotify-cover {
-    width: 45px;
-    height: 45px;
+.spotify-info,
+.game-info {
+  min-width: 0;
 
-    flex-shrink: 0;
+  display: flex;
 
-    object-fit: cover;
+  flex-direction: column;
 
-    border-radius: 11px;
+  gap: 3px;
 }
 
-.spotify-info {
-    margin-left: 11px;
+.spotify-info strong,
+.game-info strong {
+  font-size: 12px;
 
-    min-width: 0;
+  white-space: nowrap;
 
-    display: flex;
-    flex-direction: column;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
-.spotify-label {
-    font-size: 7px;
+.spotify-info span:last-child,
+.game-info span:last-child {
+  font-size: 10px;
 
-    letter-spacing: 1px;
+  color: #777;
 
-    color: #1db954;
-}
+  white-space: nowrap;
 
-.spotify-info strong {
-    margin-top: 3px;
+  overflow: hidden;
 
-    font-size: 11px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-.spotify-info span:last-child {
-    margin-top: 2px;
-
-    color: #888;
-
-    font-size: 9px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }
 
 .spotify-icon {
-    margin-left: auto;
+  margin-left: auto;
 
-    color: #1db954;
-
-    font-size: 18px;
+  color: #2eaf62;
 }
-
-
-/* =========================
-   GAME
-========================= */
-
-.game-card {
-    margin-top: 11px;
-
-    padding: 12px;
-
-    display: flex;
-    align-items: center;
-
-    text-align: left;
-
-    border-radius: 16px;
-
-    background:
-        rgba(255,255,255,.52);
-
-    border:
-        1px solid rgba(0,0,0,.06);
-
-    animation:
-        activityIn .4s ease;
-}
-
-.game-image {
-    width: 45px;
-    height: 45px;
-
-    flex-shrink: 0;
-
-    border-radius: 11px;
-
-    overflow: hidden;
-
-    background: #ddd;
-}
-
-.game-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
-.game-info {
-    margin-left: 11px;
-
-    min-width: 0;
-
-    display: flex;
-
-    flex-direction: column;
-}
-
-.game-label {
-    font-size: 7px;
-
-    letter-spacing: 1px;
-
-    color: #999;
-}
-
-.game-info strong {
-    margin-top: 3px;
-
-    font-size: 11px;
-}
-
-.game-info span:last-child {
-    margin-top: 2px;
-
-    color: #888;
-
-    font-size: 9px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-
-/* =========================
-   HIDDEN
-========================= */
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 
-@keyframes activityIn {
+/* MUSIC */
 
-    from {
-        opacity: 0;
+.music-card {
+  display: block;
 
-        transform:
-            translateY(5px);
-    }
+  margin-top: 9px;
 
-    to {
-        opacity: 1;
+  padding: 12px;
+}
 
-        transform:
-            translateY(0);
-    }
+.music-main {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+.album img {
+  width: 46px;
+  height: 46px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 11px;
+}
+
+.song {
+  display: flex;
+
+  flex: 1;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.song strong {
+  font-size: 12px;
+}
+
+.song span {
+  font-size: 10px;
+
+  color: #777;
+}
+
+.play-button {
+  width: 36px;
+  height: 36px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #171717;
+
+  color: white;
+
+  cursor: pointer;
+
+  display: grid;
+
+  place-items: center;
+}
+
+
+/* VISUALIZER */
+
+.visualizer {
+  height: 18px;
+
+  margin: 10px 1px 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  opacity: .7;
+}
+
+.visualizer span {
+  height: 5px;
+
+  flex: 1;
+
+  border-radius: 20px;
+
+  background: #555;
+
+  transition: height .12s;
+}
+
+.visualizer.playing span:nth-child(1) {
+  height: 8px;
+}
+
+.visualizer.playing span:nth-child(2) {
+  height: 15px;
+}
+
+.visualizer.playing span:nth-child(3) {
+  height: 10px;
+}
+
+.visualizer.playing span:nth-child(4) {
+  height: 17px;
+}
+
+.visualizer.playing span:nth-child(5) {
+  height: 11px;
+}
+
+.visualizer.playing span:nth-child(6) {
+  height: 16px;
+}
+
+.visualizer.playing span:nth-child(7) {
+  height: 8px;
+}
+
+.visualizer.playing span:nth-child(8) {
+  height: 14px;
+}
+
+
+/* PROGRESS */
+
+.progress-container {
+  height: 4px;
+
+  border-radius: 20px;
+
+  background: rgba(0,0,0,.08);
+
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+
+  width: 0;
+
+  background: #333;
+
+  border-radius: inherit;
+}
+
+.music-time {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 5px;
+
+  color: #999;
+
+  font-size: 9px;
+}
+
+
+/* STATS */
+
+.stats {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 25px;
+
+  margin-top: 17px;
+}
+
+.stat {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 11px;
+
+  color: #666;
+}
+
+.stat i {
+  font-size: 12px;
+}
+
+.stat span {
+  font-weight: 700;
+
+  color: #333;
+}
+
+.stat small {
+  font-size: 10px;
+
+  color: #999;
+}
+
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  color: #999;
+
+  font-size: 9px;
+}
+
+.footer i {
+  font-size: 8px;
+}
+
+
+/* CUSTOM CURSOR */
+
+.cursor {
+  position: fixed;
+
+  width: 26px;
+  height: 26px;
+
+  border: 1px solid rgba(0,0,0,.5);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 100;
+
+  transform: translate(-50%,-50%);
+
+  transition:
+    width .18s,
+    height .18s,
+    background .18s;
+}
+
+.cursor-dot {
+  position: fixed;
+
+  width: 4px;
+  height: 4px;
+
+  background: #111;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 101;
+
+  transform: translate(-50%,-50%);
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+  .cursor,
+  .cursor-dot {
+    display: none;
+  }
+
+  .page {
+    padding: 16px;
+  }
+
+  .profile {
+    padding: 25px 16px 18px;
+
+    border-radius: 23px;
+  }
 
 }
