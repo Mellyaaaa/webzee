@@ -1,0 +1,247 @@
+/* =========================
+   DISCORD STATUS COLORS
+========================= */
+
+.discord-status.online {
+    background: #43b581;
+}
+
+.discord-status.idle {
+    background: #faa61a;
+}
+
+.discord-status.dnd {
+    background: #f04747;
+}
+
+.discord-status.offline {
+    background: #747f8d;
+}
+
+.discord-online.online {
+    color: #43b581;
+}
+
+.discord-online.idle {
+    color: #faa61a;
+}
+
+.discord-online.dnd {
+    color: #f04747;
+}
+
+.discord-online.offline {
+    color: #747f8d;
+}
+
+
+/* =========================
+   SPOTIFY
+========================= */
+
+.spotify-card {
+    margin-top: 11px;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.52);
+
+    border:
+        1px solid rgba(0,0,0,.06);
+
+    transition:
+        .25s ease;
+
+    animation:
+        activityIn .4s ease;
+}
+
+.spotify-card:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255,255,255,.7);
+}
+
+.spotify-cover {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 11px;
+}
+
+.spotify-info {
+    margin-left: 11px;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.spotify-label {
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    color: #1db954;
+}
+
+.spotify-info strong {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.spotify-info span:last-child {
+    margin-top: 2px;
+
+    color: #888;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.spotify-icon {
+    margin-left: auto;
+
+    color: #1db954;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+.game-card {
+    margin-top: 11px;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.52);
+
+    border:
+        1px solid rgba(0,0,0,.06);
+
+    animation:
+        activityIn .4s ease;
+}
+
+.game-image {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    background: #ddd;
+}
+
+.game-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.game-info {
+    margin-left: 11px;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.game-label {
+    font-size: 7px;
+
+    letter-spacing: 1px;
+
+    color: #999;
+}
+
+.game-info strong {
+    margin-top: 3px;
+
+    font-size: 11px;
+}
+
+.game-info span:last-child {
+    margin-top: 2px;
+
+    color: #888;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+@keyframes activityIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
