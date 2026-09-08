@@ -1,119 +1,381 @@
-<div class="discord-card" id="discordCard">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="discord-avatar">
+  <title>yourname — profile</title>
+  <meta name="description" content="Personal profile">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="background"></div>
+  <div class="background-overlay"></div>
+  <div class="grain"></div>
+
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <main class="page">
+
+    <section class="profile">
+
+      <!-- AVATAR -->
+      <div class="avatar-container">
         <img
+          id="profileAvatar"
+          src="assets/avatar.jpg"
+          class="avatar"
+          alt="Profile"
+        >
+
+        <span class="online"></span>
+      </div>
+
+
+      <!-- NAME -->
+      <div class="name-row">
+
+        <h1>yourname</h1>
+
+        <span class="verified">
+          <i class="fa-solid fa-check"></i>
+        </span>
+
+      </div>
+
+      <p class="username">@yourusername</p>
+
+      <p class="bio">
+        living slowly, listening to music and watching the world go by.
+      </p>
+
+
+      <!-- SOCIAL -->
+      <div class="socials">
+
+        <a href="#" class="social" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#" class="social" aria-label="Discord">
+          <i class="fa-brands fa-discord"></i>
+        </a>
+
+        <a href="#" class="social" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="#" class="social" aria-label="Spotify">
+          <i class="fa-brands fa-spotify"></i>
+        </a>
+
+      </div>
+
+
+      <!-- DISCORD -->
+      <div class="discord-card">
+
+        <div class="discord-avatar">
+
+          <img
             id="discordAvatar"
             src="assets/avatar.jpg"
             alt="Discord Avatar"
-        >
+          >
 
-        <span
+          <span
             id="discordStatus"
             class="discord-status offline"
-        ></span>
-    </div>
-
-    <div class="discord-info">
-
-        <div class="discord-top">
-
-            <span class="discord-label">
-                DISCORD
-            </span>
-
-            <span
-                id="discordStatusText"
-                class="discord-online"
-            >
-                Offline
-            </span>
+          ></span>
 
         </div>
 
-        <strong id="discordName">
-            Loading...
-        </strong>
 
-        <span id="discordActivity">
-            Checking presence...
-        </span>
+        <div class="discord-info">
 
-    </div>
+          <div class="discord-top">
 
-    <i
-        id="discordIcon"
-        class="fa-brands fa-discord discord-icon"
-    ></i>
+            <span class="discord-label">
+              DISCORD
+            </span>
 
-</div>
+            <span
+              id="discordStatusText"
+              class="discord-online offline"
+            >
+              Offline
+            </span>
 
+          </div>
 
-<!-- Spotify -->
-<div
-    class="spotify-card hidden"
-    id="spotifyCard"
->
+          <strong id="discordName">
+            yourusername
+          </strong>
 
-    <img
-        id="spotifyCover"
-        class="spotify-cover"
-        src=""
-        alt="Spotify Album"
-    >
+          <span id="discordActivity">
+            Waiting for presence...
+          </span>
 
-    <div class="spotify-info">
-
-        <span class="spotify-label">
-            LISTENING TO SPOTIFY
-        </span>
-
-        <strong id="spotifySong">
-            -
-        </strong>
-
-        <span id="spotifyArtist">
-            -
-        </span>
-
-    </div>
-
-    <div class="spotify-icon">
-        <i class="fa-brands fa-spotify"></i>
-    </div>
-
-</div>
+        </div>
 
 
-<!-- Game -->
-<div
-    class="game-card hidden"
-    id="gameCard"
->
+        <i class="fa-brands fa-discord discord-icon"></i>
 
-    <div class="game-image">
+      </div>
+
+
+      <!-- SPOTIFY -->
+      <div
+        class="spotify-card hidden"
+        id="spotifyCard"
+      >
 
         <img
-            id="gameImage"
-            src=""
-            alt="Game"
+          id="spotifyCover"
+          class="spotify-cover"
+          alt="Spotify Album"
         >
 
-    </div>
+        <div class="spotify-info">
 
-    <div class="game-info">
+          <span class="spotify-label">
+            LISTENING TO SPOTIFY
+          </span>
 
-        <span class="game-label">
+          <strong id="spotifySong">
+            -
+          </strong>
+
+          <span id="spotifyArtist">
+            -
+          </span>
+
+        </div>
+
+        <div class="spotify-icon">
+          <i class="fa-brands fa-spotify"></i>
+        </div>
+
+      </div>
+
+
+      <!-- GAME -->
+      <div
+        class="game-card hidden"
+        id="gameCard"
+      >
+
+        <div class="game-image">
+
+          <img
+            id="gameImage"
+            src="assets/avatar.jpg"
+            alt="Game"
+          >
+
+        </div>
+
+        <div class="game-info">
+
+          <span class="game-label">
             PLAYING
+          </span>
+
+          <strong id="gameName">
+            -
+          </strong>
+
+          <span id="gameDetails">
+            -
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- MUSIC -->
+      <div class="music-card">
+
+        <div class="music-main">
+
+          <div class="album">
+
+            <img
+              src="assets/avatar.jpg"
+              alt="seasons"
+            >
+
+          </div>
+
+
+          <div class="song">
+
+            <strong>
+              seasons
+            </strong>
+
+            <span>
+              wave to earth
+            </span>
+
+          </div>
+
+
+          <button
+            id="playBtn"
+            class="play-button"
+            aria-label="Play music"
+          >
+
+            <i
+              id="playIcon"
+              class="fa-solid fa-play"
+            ></i>
+
+          </button>
+
+        </div>
+
+
+        <div
+          id="visualizer"
+          class="visualizer"
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
+        <div
+          id="progressContainer"
+          class="progress-container"
+        >
+
+          <div
+            id="progress"
+            class="progress"
+          ></div>
+
+        </div>
+
+
+        <div class="music-time">
+
+          <span id="currentTime">
+            0:00
+          </span>
+
+          <span id="duration">
+            0:00
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATS -->
+      <div class="stats">
+
+        <div class="stat">
+
+          <i class="fa-regular fa-eye"></i>
+
+          <span id="views">
+            0
+          </span>
+
+          <small>
+            views
+          </small>
+
+        </div>
+
+
+        <div class="stat">
+
+          <i class="fa-regular fa-heart"></i>
+
+          <span>
+            24
+          </span>
+
+          <small>
+            likes
+          </small>
+
+        </div>
+
+
+        <div class="stat">
+
+          <i class="fa-regular fa-clock"></i>
+
+          <span>
+            24/7
+          </span>
+
+          <small>
+            online
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- FOOTER -->
+      <div class="footer">
+
+        <span>
+          made with
+          <i class="fa-solid fa-heart"></i>
         </span>
 
-        <strong id="gameName">
-            -
-        </strong>
+        <span>·</span>
 
-        <span id="gameDetails">
-            -
+        <span>
+          2026
         </span>
 
-    </div>
+      </div>
 
-</div>
+    </section>
+
+  </main>
+
+
+  <!-- MUSIC -->
+  <audio
+    id="audio"
+    src="assets/seasons.mp3"
+    preload="metadata"
+  ></audio>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
